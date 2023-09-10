@@ -23,7 +23,7 @@ public class DataModelServiceTest extends EmployeeApplicationTest {
 
     @Test
     public void testSaveEmployee() {
-        EmployeeEntity employeeEntity = new EmployeeEntity(uuid, "Daniyal Akhtar", "daniyal_akhtar.com", dateOfBirth, "flying drones");
+        EmployeeEntity employeeEntity = new EmployeeEntity(uuid, "Daniyal Akhtar", "daniyal_akhtar@gmail.com", dateOfBirth, "flying drones");
         var record = employeeRepository.save(employeeEntity);
         Assertions.assertThat(record).isNotNull();
     }
@@ -44,9 +44,9 @@ public class DataModelServiceTest extends EmployeeApplicationTest {
 
         Optional<EmployeeEntity> record = employeeRepository.findById(uuid);
         if(record.isPresent()) {
-            var data = record.get();
-            data.setHobbies("playing football");
-            employeeRepository.save(data);
+            var updatedData = record.get();
+            updatedData.setHobbies("playing football");
+            employeeRepository.save(updatedData);
             employeeRepository.findById(uuid).ifPresent(updatedRecord -> Assertions.assertThat(updatedRecord.getHobbies()).isEqualTo("playing football"));
         }
     }
