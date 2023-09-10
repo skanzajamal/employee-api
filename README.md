@@ -23,11 +23,11 @@ and download kafka from binary downloads, verion 3.5.1
 
 open terminal in kafka folder and run the following command 
 
-$ .\bin\windows\zookeeper-server-start.bat .\config\zookeeper.properties
+$  .\bin\windows\zookeeper-server-start.bat .\config\zookeeper.properties
 
 open a new terminal in the same kafka folder and run the following command 
 
-$ .\bin\windows\kafka-server-start.bat .\config\server.properties
+$  .\bin\windows\kafka-server-start.bat .\config\server.properties
 
 in your IDE run mvn clean install to install the package into the local repository
 
@@ -41,7 +41,7 @@ use the Kafka-console-consumer to view your messages
 
 open a new terminal in the same kafka folder and run the following command to get all messages in a topic from the beginning
 
-$ .\bin\windows\kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic employee --from-beginning
+$  .\bin\windows\kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic employee --from-beginning
 
 
 
