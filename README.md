@@ -35,7 +35,7 @@ in your IDE press debug or run button, then the application will start on port 8
 
 for api docs open in browser http://localhost:8081/swagger-ui/index.html#
 
-provid username = "admin" and password = "password", then Swagger will be successfully interact with the endpoints.
+provide username = "admin" and password = "password", then Swagger will be successfully interact with the endpoints.
 
 # Viewing messages in Kafka
 
