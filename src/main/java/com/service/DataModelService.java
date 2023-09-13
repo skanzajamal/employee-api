@@ -25,7 +25,7 @@ public class DataModelService {
 
     public EmployeeEntity createEmployee(EmployeeEntity employeeEntity) {
         var record = employeeRepository.save(employeeEntity);
-        kafkaProducer.sendMessage(AppConstants.MESSAGE_CREATED);
+        kafkaProducer.sendMessage("employee " + record.getFullName() + " has been created");
         return record;
     }
 
@@ -33,7 +33,7 @@ public class DataModelService {
         var record = employeeRepository.getOne(id);
         BeanUtils.copyProperties(record, personEntity);
         var result = employeeRepository.save(record);
-        kafkaProducer.sendMessage(AppConstants.MESSAGE_UPDATED);
+        kafkaProducer.sendMessage("employee " + result.getFullName() + " has been updated");
         return result;
     }
 
@@ -43,7 +43,7 @@ public class DataModelService {
 
     public void deleteEmployeeById(UUID id) {
         employeeRepository.deleteById(id);
-        kafkaProducer.sendMessage(AppConstants.MESSAGE_DELETED);
+        kafkaProducer.sendMessage("employee with id: " + id + " has been deleted");
     }
 
     public List<EmployeeEntity> listOfAllEmployees() {
