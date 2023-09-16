@@ -5,7 +5,7 @@ Java application which performs all the CRUD operations and pushes related event
 # Prerequisites
 
 - JDK 11
--I ntelliJ IDEA or any IDE
+-IntelliJ IDEA or any IDE
 - Apache Kafka
 
 # Technologies:
