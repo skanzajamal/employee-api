@@ -31,7 +31,7 @@ public class DataModelService {
 
     public EmployeeEntity updateEmployee(EmployeeEntity personEntity, UUID id) {
         var record = employeeRepository.getOne(id);
-        BeanUtils.copyProperties(record, personEntity);
+        BeanUtils.copyProperties(personEntity, record);
         var result = employeeRepository.save(record);
         kafkaProducer.sendMessage("employee " + result.getFullName() + " has been updated");
         return result;

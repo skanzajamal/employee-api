@@ -1,5 +1,6 @@
 package com.model;
 
+import com.enumeration.Department;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -28,6 +29,13 @@ public class EmployeeEntity implements Serializable {
 
     @Column(nullable = false, unique = true, length = 64)
     private String email;
+
+    @Enumerated(EnumType.STRING)
+    @Column
+    private Department department;
+
+    @Column(nullable = false)
+    private String jobTitle;
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern="yyyy-MM-dd")
     @Column(nullable = false)

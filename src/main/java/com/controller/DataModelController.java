@@ -1,5 +1,7 @@
 package com.controller;
 
+import com.dto.DtoConvertor;
+import com.dto.EmployeeDto;
 import com.model.EmployeeEntity;
 import com.service.DataModelService;
 import org.springframework.http.MediaType;
@@ -21,19 +23,19 @@ public class DataModelController {
 
     @PreAuthorize("hasRole('ADMIN')")
     @RequestMapping(value = "/add", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-    public EmployeeEntity addEmployee(@RequestBody EmployeeEntity employeeEntity) {
-        return dataModelService.createEmployee(employeeEntity);
+    public EmployeeDto addEmployee(@RequestBody EmployeeEntity employeeEntity) {
+        return DtoConvertor.toDto(dataModelService.createEmployee(employeeEntity));
     }
 
     @PreAuthorize("hasRole('ADMIN')")
     @RequestMapping(value = "/update/{id}", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
-    public EmployeeEntity updateEmployee(@RequestBody EmployeeEntity employeeEntity, @PathVariable("id") UUID id) {
-        return dataModelService.updateEmployee(employeeEntity, id);
+    public EmployeeDto updateEmployee(@RequestBody EmployeeEntity employeeEntity, @PathVariable("id") UUID id) {
+        return DtoConvertor.toDto(dataModelService.updateEmployee(employeeEntity, id));
     }
 
     @RequestMapping(value = "/get/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public EmployeeEntity getById(@PathVariable("id") UUID id) {
-        return dataModelService.getEmployeeById(id);
+    public EmployeeDto getById(@PathVariable("id") UUID id) {
+        return DtoConvertor.toDto(dataModelService.getEmployeeById(id));
     }
 
     @PreAuthorize("hasRole('ADMIN')")
@@ -43,8 +45,8 @@ public class DataModelController {
     }
 
     @RequestMapping(value = "/get", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<EmployeeEntity> getAllEmployees() {
-        return dataModelService.listOfAllEmployees();
+    public List<EmployeeDto> getAllEmployees() {
+        return DtoConvertor.toDtoList(dataModelService.listOfAllEmployees());
     }
 
 } //ENDCLASS
